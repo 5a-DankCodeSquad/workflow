@@ -3,17 +3,18 @@
 
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
   </head>
 
   <body ng-app="app">
     <h1 class="text-center">My little to do app!</h1>
-    
+
     <div id="todo" class="col-xs-6 col-xs-offset-3" ng-controller="MainCtrl">
-  
+
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Item to add to todo list" ng-model="newItem">
           <span class="input-group-btn">
@@ -22,23 +23,45 @@
               <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             </button>
           </span>
-        </div><!-- /input-group -->
-        
+        </div>
+
+      <!-- /input-group -->        
       <h2>stuff i gotta do asap</h2>
-      
+
       <ul class="list-group">
         <!-- http://www.w3schools.com/css/css_float.asp -->
         <li class="list-group-item clearfix" ng-repeat="do in todos">
-          
+
           <span>{{do}}</span>
-          <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)">
-            <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
-          </button>
+
+          <!-- priority label -->
+          <span ng-class="getPriotityClass(getPriority(do))">{{getPriority(do)}}</span>
+
+          <!-- action buttons -->
+          <div class="btn-group pull-right">
+
+            <!-- priority dropdown -->
+            <button class="btn btn-primary" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-time " aria-hidden="true"></span>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li ng-repeat="p in priority_enum">
+                <a ng-click="setPriority(do, p)">
+                  <span ng-class="getPriotityClass(p)">{{p}}</span>
+                </a>
+              </li>
+            </ul>
+
+            <button class="btn btn-danger" type="button" ng-click="deleteItem(do)">
+              <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
+            </button>
+
+         </div>
 
         </li>
       </ul>
     </div>
-    
+
   </body>
 
 </html>
