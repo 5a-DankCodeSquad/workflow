@@ -4,7 +4,7 @@ var myApp = angular.module('app', []);
 
 myApp.controller('MainCtrl', function ($scope){
   $scope.todos = ["Learn Angular", "Learn node"];
-  $scope.completed = [];
+  $scope.completed = [false,false];
   $scope.newItem = "";
 
   $scope.addItem = function(){
@@ -12,6 +12,7 @@ myApp.controller('MainCtrl', function ($scope){
     if ($scope.newItem !== ""){
       $scope.todos.push($scope.newItem);
       $scope.newItem = "";
+      $scope.completed.push(false);
     }
   };
     
@@ -24,7 +25,8 @@ myApp.controller('MainCtrl', function ($scope){
     
   $scope.deleteCompletedItems = function() {
     console.log("in deletion of completed items");
-    for(var i = $scope.todos.length; i > -1; --i) {
+    var size = $scope.todos.length;
+    for(var i = size; i > -1; --i) {
       if($scope.completed[i] == true) {
         $scope.todos.splice(i, 1);
         $scope.completed.splice(i,1);
@@ -34,7 +36,8 @@ myApp.controller('MainCtrl', function ($scope){
 
   $scope.completeItem = function(item) {
     console.log("in completion");
-    $scope.completed.push($scope.todos.indexOf(item));
+    var index = $scope.todos.indexOf(item);
+    $scope.completed[index] = true;
   }
 });
 
