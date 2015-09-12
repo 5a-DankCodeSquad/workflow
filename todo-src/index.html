@@ -33,7 +33,7 @@
         <li class="list-group-item clearfix" ng-repeat="do in todos">
           
           <span>{{do}}</span>
-
+          <span ng-show="isComplete(do)" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
           <button class="btn btn-success pull-right" type="button" ng-click="completeItem(do)">
             <span class="glyphicon glyphicon-check" aria-hidden="true">Complete</span>
           </button>
@@ -44,7 +44,7 @@
 
         </li>
       </ul>
-
+      
       <button class="btn btn-danger" type="button" ng-click="deleteCompletedItems()">
         <span>Clear Completed Tasks</span>
       </button>
