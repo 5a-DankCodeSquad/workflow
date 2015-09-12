@@ -11,6 +11,7 @@
   </head>
 
   <body ng-app="app">
+
     <h1 class="text-center">My little to do app!</h1>
 
     <div id="todo" class="col-xs-6 col-xs-offset-3" ng-controller="MainCtrl">
@@ -35,10 +36,16 @@
           <span>{{do}}</span>
 
           <!-- priority label -->
+          <!-- TODO: hide if item is completed -->
           <span ng-class="getPriotityClass(getPriority(do))">{{getPriority(do)}}</span>
 
           <!-- action buttons -->
           <div class="btn-group pull-right">
+
+            <!-- edit button -->
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-{{getIndex(do)}}">
+                <span class="glyphicon glyphicon-edit " aria-hidden="true"></span>            
+            </button>
 
             <!-- priority dropdown -->
             <button class="btn btn-primary" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-time " aria-hidden="true"></span>
@@ -56,7 +63,25 @@
               <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
             </button>
 
-         </div>
+          </div>
+
+           <!-- edit modal -->
+          <div id="edit-{{getIndex(do)}}" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control" ng-model="todos_updated[getIndex(do)]">
+                            <span class="input-group-btn">
+                              <button class="btn btn-default" type="button" data-dismiss="modal" ng-click="updateItem(do)">Update
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                              </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
 
         </li>
       </ul>

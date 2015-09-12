@@ -7,13 +7,16 @@ myApp.controller('MainCtrl', function ($scope){
   $scope.priority_enum = ["critical", "high", "moderate", "low"]
 
   $scope.todos = ["Learn Angular", "Learn node"];
+  $scope.todos_updated = ["Learn Angular", "Learn node"];
   $scope.priorities = ["moderate", "moderate"];
   $scope.newItem = "";
+  $scope.editedItem = "";
 
   $scope.addItem = function(){
     console.log("in add");
     if ($scope.newItem !== ""){
       $scope.todos.push($scope.newItem);
+      $scope.todos_updated.push($scope.newItem);
       $scope.priorities.push("moderate");
       $scope.newItem = "";
     }
@@ -32,6 +35,14 @@ myApp.controller('MainCtrl', function ($scope){
     $scope.priorities[index] = priority;
   }
 
+  $scope.updateItem = function(oldItem) {
+    var index = $scope.todos.indexOf(oldItem);
+    var newItem = $scope.todos_updated[index];
+    if (newItem !== ""){
+      $scope.todos[index] = newItem;
+    }
+  }
+
   $scope.getPriority = function(item) {
     var index = $scope.todos.indexOf(item);
     return $scope.priorities[index];
@@ -41,6 +52,10 @@ myApp.controller('MainCtrl', function ($scope){
     var p_index = $scope.priority_enum.indexOf(item);
     var classes = ["label label-danger", "label label-warning", "label label-info", "label label-success"];
     return classes[p_index];
+  }
+
+  $scope.getIndex = function(item) {
+     return $scope.todos.indexOf(item);
   }
  
 });
