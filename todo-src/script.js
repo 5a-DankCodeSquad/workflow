@@ -1,5 +1,3 @@
-// Code goes here
-
 var myApp = angular.module('app', []);
 
 myApp.controller('MainCtrl', function ($scope){
@@ -38,7 +36,19 @@ myApp.controller('MainCtrl', function ($scope){
     console.log("in completion");
     var index = $scope.todos.indexOf(item);
     $scope.completed[index] = true;
+  };
+  
+  /*checks off the task if it's completed*/
+  $scope.isComplete = function(item) {
+    var index = $scope.todos.indexOf(item);
+    if ($scope.completed[index] === true) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
+  
 });
 
 /*************************
