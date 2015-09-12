@@ -1,5 +1,3 @@
-// Code goes here
-
 var myApp = angular.module('app', []);
 
 myApp.controller('MainCtrl', function ($scope){
@@ -15,15 +13,8 @@ myApp.controller('MainCtrl', function ($scope){
       $scope.completed.push(false);
     }
   };
-    
-  $scope.deleteItem = function(item){
-    console.log("in delete");
-    var index = $scope.todos.indexOf(item);
-    $scope.todos.splice(index, 1);
-    $scope.completed.splice(index,1);
-  };
-    
-  $scope.deleteCompletedItems = function() {
+  
+    $scope.deleteCompletedItems = function() {
     console.log("in deletion of completed items");
     var size = $scope.todos.length;
     for(var i = size; i > -1; --i) {
@@ -33,12 +24,31 @@ myApp.controller('MainCtrl', function ($scope){
       }
     }
   };
+    
+  $scope.deleteItem = function(item){
+    console.log("in delete");
+    var index = $scope.todos.indexOf(item);
+    $scope.todos.splice(index, 1);
+    $scope.completed.splice(index,1);
+  };
 
   $scope.completeItem = function(item) {
     console.log("in completion");
     var index = $scope.todos.indexOf(item);
     $scope.completed[index] = true;
-  }
+  };
+  
+  /*checks off the task if it's completed*/
+  $scope.isComplete = function(item) {
+    var index = $scope.todos.indexOf(item);
+    if ($scope.completed[index] === true) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  };
+  
 });
 
 /*************************
