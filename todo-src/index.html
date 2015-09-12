@@ -36,11 +36,16 @@
           <span>{{do}}</span>
 
           <!-- priority label -->
-          <!-- TODO: hide if item is completed -->
-          <span ng-class="getPriotityClass(getPriority(do))">{{getPriority(do)}}</span>
+          <span ng-class="getPriotityClass(getPriority(do))"  ng-hide="isComplete(do)">{{getPriority(do)}}</span>
+          <!--Adds check mark next to each completed task-->
+          <span ng-show="isComplete(do)" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 
           <!-- action buttons -->
           <div class="btn-group pull-right">
+
+	  <button class="btn btn-success" type="button" ng-click="completeItem(do)">
+            <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+          </button>
 
             <!-- edit button -->
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-{{getIndex(do)}}">
@@ -85,6 +90,11 @@
 
         </li>
       </ul>
+
+      <button class="btn btn-danger" type="button" ng-click="deleteCompletedItems()">
+        <span>Clear <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
+      </button>
+
     </div>
 
   </body>
