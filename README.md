@@ -115,6 +115,7 @@ You will be demonstrating your knowledge of GitHub workflow and Scrum fundamenta
 5. Show the total number of items in the to-do list at above the list.  
  - This number should change when items are added / deleted (duh).
 6. A button to clear all "completed" tasks
+7. Add functionality to enter todo item upon hitting the enter key, so you dont need to press the "add" button
 
 #####In order to complete these tasks, you will need to:
 
