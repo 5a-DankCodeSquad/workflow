@@ -20,17 +20,6 @@ myApp.controller('MainCtrl', function ($scope){
     $scope.todos.splice(index, 1);
     $scope.completed.splice(index,1);
   };
-    
-  $scope.deleteCompletedItems = function() {
-    console.log("in deletion of completed items");
-    var size = $scope.todos.length;
-    for(var i = size; i > -1; --i) {
-      if($scope.completed[i] == true) {
-        $scope.todos.splice(i, 1);
-        $scope.completed.splice(i,1);
-      }
-    }
-  };
 
   $scope.completeItem = function(item) {
     console.log("in completion");
