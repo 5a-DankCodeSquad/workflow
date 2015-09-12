@@ -33,6 +33,7 @@
         <li class="list-group-item clearfix" ng-repeat="do in todos">
           
           <span>{{do}}</span>
+          <!--Adds check mark next to each completed task-->
           <span ng-show="isComplete(do)" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
           <button class="btn btn-success pull-right" type="button" ng-click="completeItem(do)">
             <span class="glyphicon glyphicon-check" aria-hidden="true">Complete</span>
