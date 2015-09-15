@@ -2,6 +2,7 @@
 <html>
 
   <head>
+    <title>My Todo App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -13,11 +14,10 @@
   <body ng-app="app">
 
     <h1 class="text-center">My little to do app!</h1>
-
     <div id="todo" class="col-xs-6 col-xs-offset-3" ng-controller="MainCtrl">
 
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Item to add to todo list" ng-model="newItem">
+          <input type="text" class="form-control" placeholder="Item to add to todo list" ng-model="newItem" ng-keypress="checkEnter($event)">
           <span class="input-group-btn">
             <button class="btn btn-default" type="button" ng-click="addItem()">
               Add
@@ -26,7 +26,6 @@
           </span>
         </div>
 
-      <!-- /input-group -->
       <!-- /input-group -->
       <h2>stuff i gotta do asap
         <span class ="badge pull-right">{{todos.length}}</span>
@@ -99,7 +98,6 @@
       </button>
 
     </div>
-
   </body>
 
 </html>

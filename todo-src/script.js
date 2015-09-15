@@ -1,5 +1,4 @@
 // Code goes here
-
 var myApp = angular.module('app', []);
 
 myApp.controller('MainCtrl', function ($scope){
@@ -20,6 +19,12 @@ myApp.controller('MainCtrl', function ($scope){
       $scope.todos_updated.push($scope.newItem);
       $scope.priorities.push("moderate");
       $scope.newItem = "";
+    }
+  }
+
+  $scope.checkEnter = function(keyEvent){
+    if(keyEvent.which === 13){
+	$scope.addItem();
     }
   }
     
