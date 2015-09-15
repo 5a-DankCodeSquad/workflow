@@ -10,7 +10,6 @@ myApp.controller('MainCtrl', function ($scope){
   $scope.todos_updated = ["Learn Angular", "Learn node"];
   $scope.priorities = ["moderate", "moderate"];
   $scope.completed = [false,false];
-    $scope.completed_count = 0;
   $scope.newItem = "";
   $scope.editedItem = "";
 
@@ -28,11 +27,7 @@ myApp.controller('MainCtrl', function ($scope){
     console.log("in delete");
     var index = $scope.todos.indexOf(item);
     $scope.todos.splice(index, 1);
-      if($scope.completed[index] === true){
-          $scope.completed_count--;
-      }
     $scope.completed.splice(index,1);
-
     $scope.priorities.splice(index, 1);
     $scope.todos_updated.splice(index, 1);
  }
@@ -50,7 +45,6 @@ myApp.controller('MainCtrl', function ($scope){
   $scope.completeItem = function(item) {
     console.log("in completion");
     var index = $scope.todos.indexOf(item);
-      $scope.completed_count++;
     $scope.completed[index] = true;
   };
 
@@ -88,7 +82,6 @@ myApp.controller('MainCtrl', function ($scope){
   $scope.getIndex = function(item) {
      return $scope.todos.indexOf(item);
   }
-
 
 });
 
